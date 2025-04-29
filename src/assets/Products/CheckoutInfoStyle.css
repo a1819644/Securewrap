@@ -1,0 +1,60 @@
+.items-info-container {
+  background-color: #ebeff0 !important;
+  border-radius: 5px;
+  letter-spacing: 0.3px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.items-info-container h2 {
+  padding: 5px;
+}
+.items-info-container hr {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.items-info-container .items-containers {
+  align-items: center;
+  padding: 10px;
+}
+
+
+.items-info-container .total-price {
+  padding-inline: 5px;
+}
+.items-info-container .promo-code-container .inputField {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.items-info-container .promo-code-container .btn {
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  color: white !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background-color: #0cb1ee;
+  border-color: #0cb1ee;
+}
+.promo-code-container .btn:hover {
+  background-color: white;
+  color: #0cb1ee !important;
+  border-color: #04afed;
+}
+
+.items-info-container .checkout-bttn .btn {
+  padding: 15px 15px;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  color: white !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background-color: #0cb1ee;
+  border-color: #0cb1ee;
+}
+.items-info-container .checkout-bttn .btn:hover {
+  background-color: white;
+  color: #0cb1ee !important;
+  border-color: #0cb1ee;
+}

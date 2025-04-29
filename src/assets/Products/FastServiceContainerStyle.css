@@ -1,0 +1,35 @@
+/* fast serivices */
+.fast-service-container {
+  margin: 20% 0px 100px;
+  background-color: rgb(219, 225, 230);
+  word-wrap: break-word;
+  text-align: center;
+  padding: 50px 10px !important;
+  position: relative;
+}
+.fast-service-container .col p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.fast-service-container .col .vertical {
+  border-left: 0.5px solid rgb(15, 15, 15);
+  height: 100px;
+  position: absolute;
+  left: 25%;
+  top: 20%;
+}
+.fast-service-container .col .vertical-2 {
+  border-left: 0.5px solid rgb(15, 15, 15);
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+}
+.fast-service-container .col .vertical-3 {
+  border-left: 0.5px solid rgb(15, 15, 15);
+  height: 100px;
+  position: absolute;
+  left: 75%;
+  top: 20%;
+}

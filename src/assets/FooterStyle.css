@@ -1,0 +1,70 @@
+.main-footer-container {
+  margin-top: 20px;
+  background-color: white;
+}
+h6 {
+  color: black !important;
+}
+.p {
+  font-size: 1rem; /* 16px for default */
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #0cb1ee;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgb(255, 255, 255);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 10px #9fe0f7;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  /* Mobile */
+  .navbar-nav .nav-link {
+    font-size: 0.875rem; /* 14px */
+    padding: 8px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Desktop */
+  .navbar-nav .nav-link {
+    font-size: 1.125rem; /* 18px */
+  }
+}

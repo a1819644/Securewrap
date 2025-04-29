@@ -1,0 +1,47 @@
+.card {
+  background-color: white;
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+}
+.newarrivals-card-body {
+  margin: 10px;
+}
+.newarrivals-card-body .card-title {
+  font-size: large;
+  font-weight: 600;
+} /* Ensure the card takes up full height */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures the card expands to fill available space */
+}
+
+/* Ensure the card body takes up all available space except for the button */
+.newarrivals-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced out */
+  height: 100%; /* Makes sure the body takes up full height */
+}
+
+/* This will push the button to the bottom of the card */
+.newarrivals-card-body .d-flex {
+  margin-top: auto;
+}
+
+.newarrivals-card-body .card-title .price {
+  font-size: medium;
+  font-weight: 400;
+}
+.newarrivals-card-body .d-flex .btn {
+  border-radius: 40px;
+  margin-top: 10px;
+  color: white;
+  background-color: #0cb1ee;
+  border-color: #0cb1ee;
+}
+.newarrivals-card-body .d-flex .btn:hover {
+  color: #0cb1ee;
+  background-color: white;
+  border-color: #0cb1ee;
+}

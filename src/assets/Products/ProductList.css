@@ -1,0 +1,135 @@
+.container .row .main-product {
+  padding-top: 5%;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 100px;
+  letter-spacing: 0.5px;
+}
+.container .card .card-body {
+  background-color: white;
+}
+
+.container .searchBar .col-12 {
+  padding-right: 0px;
+}
+.container .searchBar .col-12 text {
+  padding: 10px;
+}
+.container .searchBar .col-12 .form-control {
+  padding: 10px;
+}
+
+.container .filters {
+  text-align: left;
+  margin-top: 20px;
+}
+.container .filters .form-check-input {
+  margin: 2px 5px;
+}
+.container .filters .form-check-label {
+  font-size: medium;
+  font-weight: 500;
+}
+
+.container .row .main-product .row {
+  --bs-gutter-x: 0.2rem;
+}
+.container .row .main-product .row .product-categories-card .card {
+  border-radius: 0px;
+}
+.container
+  .row
+  .main-product
+  .row
+  .product-categories-card
+  .card
+  .card-img-top {
+  border-radius: 3px;
+  margin: 5%;
+  width: 90%;
+  height: 200px;
+}
+/* Style the tag */
+.container .row .main-product .row .product-categories-card .card .tag-sale {
+  position: absolute; /* Place it relative to the image */
+  top: 10px; /* Adjust the vertical position */
+  left: 10px; /* Adjust the horizontal position */
+  background-color: #0cb1ee; /* Tag background color */
+  color: rgb(252, 252, 252); /* Tag text color */
+  font-size: 0.7rem; /* Font size */
+  font-weight: bold; /* Bold text */
+  padding: 5px 15px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1; /* Ensure the tag appears above the image */
+}
+.container .row .main-product .row .product-categories-card .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* limits to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2em; /* adjust based on your design */
+  max-height: 2.4em; /* line-height × number of lines */
+  height: 2.4em;
+}
+
+/* Style the tag */
+.container
+  .row
+  .main-product
+  .row
+  .product-categories-card
+  .card
+  .tag-ecofriendly
+  img {
+  position: absolute; /* Place it relative to the image */
+  top: 10px; /* Adjust the vertical position */
+  right: 10px; /* Adjust the horizontal position */
+  width: 30px;
+  height: auto;
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1; /* Ensure the tag appears above the image */
+}
+
+/* buttons styles */
+.container-products .product-categories-card .btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 15px;
+}
+
+.container-products .product-categories-card .btn-danger {
+  border-color: #0cb1ee;
+}
+
+.container-products .product-categories-card .btn {
+  background-color: #0cb1ee;
+  border-radius: 40px;
+  border-color: #0cb1ee;
+  font-size: 16px;
+  color: white;
+}
+.container-products .product-categories-card .btn:hover {
+  background-color: white;
+  border-radius: 40px;
+  border-color: #0cb1ee;
+  font-size: 16px;
+  color: #0cb1ee;
+}
+
+.container-products .product-categories-card .btn-secondary {
+  border-radius: 40px;
+}
+.container-products .product-categories-card .btn-secondary:hover {
+  background-color: white;
+  border-radius: 40px;
+  border-color: #0cb1ee;
+  color: #0cb1ee;
+}

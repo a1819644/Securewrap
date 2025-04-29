@@ -1,0 +1,34 @@
+.card .card-cont-productCategoriesCard {
+  background-color: rgb(219, 225, 230) !important;
+}
+
+.card {
+  text-align: left;
+}
+
+.card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.card .product-categories-card-btn {
+  background-color: #0cb1ee !important;
+  color: white;
+  border-radius: 40px;
+  margin-bottom: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.card .product-categories-card-btn:hover {
+  border-color: #0cb1ee;
+  background-color: white !important;
+  color: #0cb1ee;
+}

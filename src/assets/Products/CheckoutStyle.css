@@ -1,0 +1,58 @@
+.container-checkout h2 {
+  padding: 5px;
+}
+.container-checkout .container-md .billing-info-container {
+  background-color: #afe4f7 !important;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.container-checkout .container-md .billing-info-container .row h4 {
+  padding: 5px;
+  margin-bottom: 20px !important;
+}
+.container-checkout .container-md .billing-info-container .row h6 {
+  padding-inline: 5px;
+}
+
+.container-checkout .container-md .billing-info-container .row hr {
+  padding-inline: 5px;
+}
+.container-checkout .billing-info-container .delivery-Method {
+  margin-left: 2px;
+}
+.container-checkout .billing-info-container .delivery-Method label{
+  font-size: 16px;
+  font-weight: 400;
+}
+.container-checkout .billing-info-container .delivery-Method .form-check-input {
+  margin-left: 2px;
+}
+
+/* form */
+
+.container-checkout
+  .container-md
+  .billing-info-container
+  .personal-info-form
+  input {
+  border: 0px !important;
+  background-color: white;
+  width: 100%;
+}
+
+.container-checkout
+  .container-md
+  .billing-info-container
+  .shipping-address
+  input {
+  border: 0px !important;
+  background-color: white;
+  width: 100%;
+}
+.container-checkout .container-md .billing-info-container .delivery-note input {
+  border: 0px !important;
+  text-align: center;
+  background-color: white;
+  width: 60%;
+  height: 100px;
+}

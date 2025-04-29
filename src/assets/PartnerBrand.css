@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+  align-content: center;
+}
+.partner-brand {
+  margin-top: 10px;
+  background-color: rgb(223, 221, 221);
+}
+
+.partner-brand .slider-container img {
+  padding: 20px;
+  display: inline-flex;
+  align-content: center;
+}
+.partner-brand .slider-container .slick-slider .slick-arrow {
+  display: none !important;
+}
+.partner-logo {
+  object-fit: contain;
+  max-height: 200px;
+  margin: auto;
+  display: block;
+  padding: 10px;
+}
+
+.partner-slide {
+  text-align: center;
+}

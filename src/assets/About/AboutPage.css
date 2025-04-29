@@ -1,0 +1,57 @@
+.first-section {
+  text-align: center;
+  background-color: rgba(212, 211, 211, 0.5);
+  letter-spacing: 1px;
+}
+.first-section h1 {
+  font-weight: 800;
+}
+.first-section .who-we-are {
+  padding-bottom: 50px;
+}
+.first-section .who-we-are .text-section p {
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.first-section .who-we-are .photo-section {
+  padding-left: 0px !important;
+  align-items: start;
+  display: inline-flex;
+}
+
+.body-section {
+  margin: 100px;
+  border-radius: 10px;
+}
+.body-section .diversity {
+  background-color: rgba(212, 211, 211);
+  align-items: center;
+  padding-top: 40px;
+  min-height: 100px;
+  padding-bottom: 50px;
+}
+.body-section .diversity .col {
+  padding-bottom: 20px;
+}
+.body-section .diversity .col-12 img {
+  margin-left: 150px;
+  width: 50% !important;
+  height: 100px;
+}
+.body-section .diversity .col-12 h3 {
+  padding-top: 35px;
+  font-size: 30px;
+  color: white;
+  font-weight: 700;
+}
+
+.body-section .customers-employees-australia {
+  margin: 80px 0px;
+  text-align: center;
+}
+
+.body-section .customers-employees-australia h1 {
+  font-weight: 700;
+  letter-spacing: 0.2;
+}

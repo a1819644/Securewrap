@@ -1,0 +1,46 @@
+.container-products {
+  margin: 50px 5px;
+  letter-spacing: 0.5px;
+  text-align: start;
+}
+
+.container-products .container .description-container h4 {
+  font-weight: 700;
+  font-size: xx-large;
+}
+.container-products .container .description-container ul {
+  text-align: start;
+  color: #0cb1ee;
+}
+.container-products .container .description-container .quantity .h5 {
+  color: #0cb1ee;
+}
+.container-products .container .description-container .quantity .col {
+  justify-content: space-between !important;
+}
+.container-products .container .description-container .quantity .btn {
+  border-color: #0cb1ee;
+  color: #0cb1ee;
+}
+.container-products .container .description-container .quantity .btn:hover {
+  border-color: #0cb1ee;
+  color: white;
+  background-color: #0cb1ee;
+}
+.container-products .container .description-container .add-to-cart-btn {
+  border-color: #0cb1ee;
+  color: white;
+  background-color: #0cb1ee;
+}
+.container-products .container .description-container .add-to-cart-btn:hover {
+  border-color: #0cb1ee;
+  color: white;
+  background-color: #0cb1ee;
+}
+.description-container {
+  margin-bottom: 50px;
+}
+.description-box p,
+ul {
+  font-size: 12px;
+}

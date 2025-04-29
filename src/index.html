@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <title>Add Products</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      input,
+      textarea,
+      button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add Products</h1>
+    <div class="container">
+      <label for="productCategory">Select Product Category:</label>
+      <select id="productCategory">
+        <option value="Packaging">Packaging</option>
+        <option value="Mailing Satchels">Mailing Satchels</option>
+        <option value="Stretch Films">Stretch Films</option>
+        <option value="Stationeries">Stationeries</option>
+        <option value="Bubble Wraps">Bubble Wraps</option>
+        <option value="Others">Others</option>
+      </select>
+      <input type="text" id="productName" placeholder="Product Title" />
+      <textarea id="productDescription" placeholder="Description"></textarea>
+      <label>
+        Serial Number
+        <input type="Text" id="serialNumber" placeholder="EX45SA" />
+      </label>
+      <label>
+        Amount
+        <input type="number" id="price" placeholder="$.." />
+      </label>
+      <label>
+        Shipping Weight & Dimensions
+        <input type="text" id="Dimensions" placeholder="Weights" />
+        <input type="text" id="Weight" placeholder="Dimensions" />
+      </label>
+      <h3>Product Qualities</h3>
+      <label>
+        Measurements
+        <input type="text" id="measurements" placeholder="228 mm or in cm" />
+      </label>
+      <label>Qty <input type="number" id="qty" placeholder="1,2..100" /></label>
+      <label
+        >PerQty <input type="number" id="perqty" placeholder="1,2..100"
+      /></label>
+      <label>
+        Colour
+        <input type="text" id="colourInput" placeholder="Enter a colour" />
+        <button type="button" onclick="addColour()">Add Colour</button>
+      </label>
+      <ul id="colourList"></ul>
+      <input type="text" id="otherQuality" placeholder="Enter a quality" />
+      <button type="button" onclick="addOtherQuality()">Add to List</button>
+      <ul id="othersList"></ul>
+      <label><input type="checkbox" id="onSale" /> On Sale</label>
+      <label
+        ><input type="checkbox" id="isEcoFriendly" /> Is Eco-Friendly</label
+      >
+      <button onclick="uploadData()">Submit</button>
+      <h3>Forum Posts</h3>
+      <div id="forumPosts"></div>
+    </div>
+    <script>
+      let othersArray = [];
+      let colourArray = [];
+      const firebaseConfig = {
+        apiKey: "AIzaSyDkQTfHFpskXg7Ao7oO4AjwrWxoNXFxVJc",
+
+        authDomain: "wrap-17bfd.firebaseapp.com",
+
+        projectId: "wrap-17bfd",
+
+        storageBucket: "wrap-17bfd.firebasestorage.app",
+
+        messagingSenderId: "812409024907",
+
+        appId: "1:812409024907:web:f23ed1559305f219a57f8e",
+
+        measurementId: "G-C6KWGGG5YN",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      if (location.hostname === "localhost") {
+        db.useEmulator("localhost", 8080);
+      }
+      function addOtherQuality() {
+        const input = document.getElementById("otherQuality");
+        if (input.value.trim() !== "") {
+          othersArray.push(input.value.trim());
+          const li = document.createElement("li");
+          li.textContent = input.value;
+          document.getElementById("othersList").appendChild(li);
+          input.value = "";
+        } else {
+          alert("Please enter a quality before adding.");
+        }
+      }
+      function addColour() {
+        const input = document.getElementById("colourInput");
+        if (input.value.trim() !== "") {
+          colourArray.push(input.value.trim());
+          const li = document.createElement("li");
+          li.textContent = input.value;
+          document.getElementById("colourList").appendChild(li);
+          input.value = "";
+        } else {
+          alert("Please enter a colour before adding.");
+        }
+      }
+      async function uploadData() {
+        const name = document.getElementById("productName").value.trim();
+        const desc = document.getElementById("productDescription").value.trim();
+        const serialNumber = document.getElementById("serialNumber").value;
+        const price = document.getElementById("price").value;
+        const category = document.getElementById("productCategory").value;
+        const qualities = {
+          measurements: document.getElementById("measurements").value.trim(),
+          qty: document.getElementById("qty").value.trim(),
+          perqty: document.getElementById("perqty").value.trim(),
+          others: othersArray,
+          colour: colourArray,
+        };
+        const onSale = document.getElementById("onSale").checked;
+        const isEcoFriendly = document.getElementById("isEcoFriendly").checked;
+        try {
+          await db
+            .collection("products")
+            .doc(category)
+            .collection("items")
+            .add({
+              name,
+              desc,
+              serialNumber,
+              price,
+              category,
+              qualities,
+              onSale,
+              isEcoFriendly,
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            });
+          alert("Product added successfully!");
+          document.getElementById("productName").value = "";
+          document.getElementById("productDescription").value = "";
+          document.getElementById("serialNumber").value = "";
+          document.getElementById("price").value = "";
+          document.getElementById("measurements").value = "";
+          document.getElementById("qty").value = "";
+          document.getElementById("perqty").value = "";
+          document.getElementById("othersList").innerHTML = "";
+          document.getElementById("colourList").innerHTML = "";
+          othersArray = [];
+          colourArray = [];
+        } catch (error) {
+          console.error("Error adding product: ", error);
+        }
+      }
+    </script>
+  </body>
+</html>

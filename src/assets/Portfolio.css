@@ -1,0 +1,27 @@
+.container .col {
+  text-align: start;
+  letter-spacing: 0.5px;
+}
+
+.container .col .portfolio-card {
+  margin-bottom: 20px;
+}
+.container .col h1 {
+  text-align: center;
+}
+.container .col .portfolio-card p {
+  font-size: 0.9rem;
+  font-weight: 400 !important;
+}
+
+.container .col .portfolio-card ul {
+  font-size: 0.9rem;
+  font-weight: 300 !important;
+  color: #0a6b8e;
+  text-align: start;
+}
+
+.container .second-Section {
+  font-size: 0.9rem;
+  font-weight: 400 !important;
+}

@@ -32,6 +32,10 @@
   background-color: rgba(212, 211, 211, 0.5);
   border-radius: 10px;
   box-shadow: 3px 3px rgba(212, 211, 211, 0.5);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 .what-we-do .service-card .divider {
   margin-left: 30px;
@@ -60,10 +64,10 @@
   margin-top: 50px;
   margin-bottom: 100px;
   background-color: rgba(212, 211, 211, 0.5);
-  padding: 40px 0px;
+  padding: 40px 25px;
 }
 .why-choose-section .col {
-  padding-left: 0px;
+  padding-left: 10px;
 }
 .why-choose-section .col .experiences {
   padding-top: 20px;

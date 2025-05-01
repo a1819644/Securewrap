@@ -35,6 +35,10 @@
   letter-spacing: 0.5px;
   background-color: #0cb1ee;
   border-color: #0cb1ee;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 .promo-code-container .btn:hover {
   background-color: white;
@@ -52,6 +56,10 @@
   letter-spacing: 0.5px;
   background-color: #0cb1ee;
   border-color: #0cb1ee;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 .items-info-container .checkout-bttn .btn:hover {
   background-color: white;

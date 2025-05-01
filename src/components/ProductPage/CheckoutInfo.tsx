@@ -173,7 +173,7 @@ const CheckoutInfo: React.FC<CheckoutInfoProps> = ({
         </div>
         <div
           className="promo-code-container mb-3"
-          style={{ display: "flex", gap: "10px" }}
+          style={{ display: "flex", gap: "10px", padding:"5px" }}
         >
           <input
             type="text"
@@ -236,7 +236,7 @@ const SummaryRow = ({
   isBold?: boolean;
 }) => (
   <div className={`row ${label.toLowerCase()}`}>
-    <div className="col-9">
+    <div className="col-8">
       <p style={isBold ? { fontWeight: "bold" } : {}}>{label}</p>
     </div>
     <div className="col">

@@ -43,3 +43,13 @@
 .navbar-toggler-icon {
   background-color: white !important;
 }
+
+@media (max-width: 1000px) {
+  .navbar .container-fluid {
+   text-align: center;
+  }
+  
+.logo{
+  margin-left: -50px;
+}
+}

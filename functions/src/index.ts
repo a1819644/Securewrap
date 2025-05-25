@@ -3,7 +3,7 @@ import * as logger from "firebase-functions/logger";
 import cors from "cors"; // Default import for cors
 import * as admin from "firebase-admin";
 const stripe = require("stripe")(
-  "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"
+  ""
 );
 admin.initializeApp();
 const db = admin.firestore();

@@ -1,10 +1,10 @@
 import React from "react";
 import "../../assets/ProductCategoriesCard.css";
-import packagingImage from "../../imgAssets/Categories/packing.png";
-import stretchFlimsImage from "../../imgAssets/Categories/stretchFlims.png";
-import satchelImage from "../../imgAssets/Categories/satchelImage.png";
-import stationeryImage from "../../imgAssets/Categories/stationeryImage.png";
-import bubblewrapImage from "../../imgAssets/Categories/bubblewrap.png";
+import packagingImage from "../../imgAssets/Categories/packing.webp";
+import stretchFlimsImage from "../../imgAssets/Categories/stretchFlims.webp";
+import satchelImage from "../../imgAssets/Categories/satchelImage.webp";
+import stationeryImage from "../../imgAssets/Categories/stationeryImage.webp";
+import bubblewrapImage from "../../imgAssets/Categories/bubblewrap.webp";
 import { Link } from "react-router-dom";
 const categories = [
   {
@@ -42,6 +42,12 @@ const ProductCategoriesCard = () => {
               <div className="card-body d-flex flex-column align-items-center">
                 <img
                   src={category.image}
+                  srcSet={`
+                        ${category.image} 150w,
+                        ${category.image.replace(".jpg", "-300x300.jpg")} 300w,
+                        ${category.image.replace(".jpg", "-600x600.jpg")} 600w,
+                        ${category.image.replace(".jpg", "-1500x1500.jpg")} 1500w
+                      `}
                   className="card-img-top img-fluid mb-3"
                   alt={category.name}
                 />

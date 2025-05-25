@@ -1,9 +1,9 @@
 import React from "react";
 import "../../assets/Portfolio.css";
 
-import satchelImage from "../../imgAssets/Categories/satchelImage.png";
-import stationeryImage from "../../imgAssets/Categories/stationeryImage.png";
-import bubblewrapImage from "../../imgAssets/Categories/bubblewrap.png";
+import satchelImage from "../../imgAssets/Categories/satchelImage.webp";
+import stationeryImage from "../../imgAssets/Categories/stationeryImage.webp";
+import bubblewrapImage from "../../imgAssets/Categories/bubblewrap.webp";
 
 export const Portfolio = () => {
   return (

@@ -1,33 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
-
-import { useMemo } from "react";
-import axios from "axios";
+import { useProductContext } from "../data/ProductContext"; // Assuming this is the context path
 import "../../assets/Products/ProductList.css";
 import EcoFriendly from "../../imgAssets/Eco-friendly/eco-friendly-icon.svg";
-import stretchFlimsImage from "../../imgAssets/Categories/stretchFlims.png";
-
-// Define the Product type
-type Product = {
-  id: string;
-  name: string;
-  brand?: string;
-  price: number;
-  inStock: boolean;
-  category: string;
-  description?: string;
-  imageUrl: string;
-  isEcoFriendly: boolean;
-  onSale: boolean;
-  serialNumber: string;
-  qualities?: Record<string, string>;
-};
+import stretchFlimsImage from "../../imgAssets/Categories/stretchFlims.webp";
 
 const ProductList = () => {
   const location = useLocation();
-  const selectedCategory = location.state?.category;
+  const { products, loading } = useProductContext(); // Use context here
 
-  const [products, setProducts] = useState<Product[]>([]);
   const [sort, setSort] = useState("new");
   const [filterBrand, setFilterBrand] = useState<string[]>([]);
   const [filterCategory, setFilterCategory] = useState<string[]>([]);
@@ -36,10 +17,9 @@ const ProductList = () => {
   const [onSaleOnly, setOnSaleOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
   const productsPerPage = 9;
 
-  // Apply initial category filter if passed from previous page
+  // Apply initial filters from location.state once on mount
   useEffect(() => {
     if (location.state) {
       const { category, brand, search } = location.state;
@@ -49,30 +29,7 @@ const ProductList = () => {
     }
   }, [location.state]);
 
-  // Debounced search for better performance
-  useEffect(() => {
-    const cacheKey = "product_cache";
-    const cacheExpiryKey = "product_cache_expiry";
-    const CACHE_DURATION_MS = 30 * 60 * 1000; // 30 minutes
-
-    const cachedData = localStorage.getItem(cacheKey);
-    const cachedTime = localStorage.getItem(cacheExpiryKey);
-    const now = Date.now();
-
-    if (
-      cachedData &&
-      cachedTime &&
-      now - parseInt(cachedTime) < CACHE_DURATION_MS
-    ) {
-      const parsedData: Product[] = JSON.parse(cachedData);
-      setProducts(parsedData);
-      setLoading(false);
-    } else {
-      // No cache or expired cache, so fetch from server
-      fetchProducts();
-    }
-  }, []);
-
+  // Reset to page 1 on filter/sort change
   useEffect(() => {
     setCurrentPage(1);
   }, [
@@ -82,79 +39,28 @@ const ProductList = () => {
     ecoFriendlyOnly,
     onSaleOnly,
     searchQuery,
+    sort,
   ]);
 
-  // Fetch products data
-  const fetchProducts = async () => {
-    const cacheKey = "product_cache";
-    const cacheExpiryKey = "product_cache_expiry";
-    const CACHE_DURATION_MS = 30 * 60 * 1000; // 30 minutes
-
-    try {
-      const cachedData = localStorage.getItem(cacheKey);
-      const cachedTime = localStorage.getItem(cacheExpiryKey);
-      const now = Date.now();
-
-      if (
-        cachedData &&
-        cachedTime &&
-        now - parseInt(cachedTime) < CACHE_DURATION_MS
-      ) {
-        const parsedData: Product[] = JSON.parse(cachedData);
-        setProducts(parsedData);
-        setLoading(false);
-        return;
-      }
-
-      // If no cache or expired cache, fetch from API
-      const response = await axios.get(
-        "https://getallproductsanditems-volwq6ekcq-uc.a.run.app"
-      );
-      const data = response.data.data;
-
-      const flattened: Product[] = Object.entries(data).flatMap(
-        ([category, items]) =>
-          Object.entries(items as Record<string, any>).map(([id, product]) => ({
-            id,
-            name: product.name,
-            brand: product.brand,
-            price: product.price,
-            inStock: true,
-            category,
-            description: product.desc,
-            imageUrl: product["image url"],
-            isEcoFriendly: product.isEcoFriendly,
-            onSale: product.onSale,
-            serialNumber: product.serialNumber,
-            qualities: product.qualities ?? {},
-          }))
-      );
-
-      // Cache the data
-      localStorage.setItem(cacheKey, JSON.stringify(flattened));
-      localStorage.setItem(cacheExpiryKey, now.toString());
-
-      setProducts(flattened);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setLoading(false);
-    }
-  };
-
+  // Sort products
   const sortedProducts = useMemo(() => {
     return [...products].sort((a, b) => {
       if (sort === "price_asc") return a.price - b.price;
       if (sort === "price_desc") return b.price - a.price;
-      return 0;
+      return 0; // "new" or default - no sorting or implement date if available
     });
   }, [products, sort]);
 
+  // Filter products
   const filteredProducts = useMemo(() => {
     return sortedProducts.filter((product) => {
       const matchesBrand =
         filterBrand.length > 0
           ? filterBrand.includes(product.brand || "")
+          : true;
+      const matchesCategory =
+        filterCategory.length > 0
+          ? filterCategory.includes(product.category)
           : true;
       const matchesSearch = searchQuery
         ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -162,18 +68,14 @@ const ProductList = () => {
       const matchesStock = inStockOnly ? product.inStock : true;
       const matchesEco = ecoFriendlyOnly ? product.isEcoFriendly : true;
       const matchesSale = onSaleOnly ? product.onSale : true;
-      const matchesCategory =
-        filterCategory.length > 0
-          ? filterCategory.includes(product.category)
-          : true;
 
       return (
         matchesBrand &&
+        matchesCategory &&
         matchesSearch &&
         matchesStock &&
         matchesEco &&
-        matchesSale &&
-        matchesCategory
+        matchesSale
       );
     });
   }, [
@@ -184,7 +86,6 @@ const ProductList = () => {
     ecoFriendlyOnly,
     onSaleOnly,
     searchQuery,
-    selectedCategory,
   ]);
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -194,10 +95,12 @@ const ProductList = () => {
     startIndex + productsPerPage
   );
 
+  // Pagination handlers
   const handleNext = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handlePrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
+  // Filter toggles
   const toggleBrandFilter = (brand: string) => {
     setFilterBrand((prev) =>
       prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
@@ -301,7 +204,7 @@ const ProductList = () => {
             <select
               className="form-select w-auto"
               onChange={(e) => setSort(e.target.value)}
-              value={sort} // <-- add this
+              value={sort}
             >
               <option value="new">New</option>
               <option value="price_asc">Price Ascending</option>
@@ -320,6 +223,21 @@ const ProductList = () => {
                   <div className="card">
                     <img
                       src={product.imageUrl || stretchFlimsImage}
+                      srcSet={`
+                            ${product.imageUrl} 150w,
+                            ${product.imageUrl.replace(
+                              ".webp",
+                              "-300x300.webp"
+                            )} 300w,
+                            ${product.imageUrl.replace(
+                              ".jpg",
+                              "-600x600.webp"
+                            )} 600w,
+                            ${product.imageUrl.replace(
+                              ".webp",
+                              "-1500x1500.webp"
+                            )} 1500w
+                          `}
                       className="card-img-top"
                       alt={product.name}
                       loading="lazy"
@@ -384,16 +302,6 @@ const ProductList = () => {
               Next
             </button>
           </div>
-          {/* <button
-            className="btn btn-outline-primary"
-            onClick={() => {
-              localStorage.removeItem("product_cache");
-              localStorage.removeItem("product_cache_expiry");
-              fetchProducts();
-            }}
-          >
-            Refresh Products
-          </button> */}
         </div>
       </div>
     </div>

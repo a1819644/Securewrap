@@ -2,7 +2,9 @@ import { onRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 import cors from "cors"; // Default import for cors
 import * as admin from "firebase-admin";
-const stripe = require("stripe")("");
+const stripe = require("stripe")(
+  ""
+);
 admin.initializeApp();
 const db = admin.firestore();
 // Initialize CORS middleware
@@ -293,8 +295,8 @@ export const createCheckoutSession = onRequest((req, res) => {
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "http://localhost:5173/",
-        cancel_url: "http://localhost:5173/checkout",
+        success_url: "https://www.securewrap.com.au",
+        cancel_url: "https://www.securewrap.com.au/Cart",
         automatic_tax: {
           enabled: false,
         },

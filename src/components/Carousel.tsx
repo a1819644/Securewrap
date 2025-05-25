@@ -1,5 +1,5 @@
 import React from "react";
-import ecoFiendlyBanner from "../imgAssets/homePage/ecoFriendly.mp4";
+import ecoFiendlyBanner from "../imgAssets/homePage/ecoFriendly.webp";
 import deliveryBanner from "../imgAssets/homePage/delivery.mp4";
 export const Carousel = () => {
   return (
@@ -20,23 +20,19 @@ export const Carousel = () => {
             data-bs-slide-to="1"
             aria-label="Slide 2"
           ></button>
-         
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
             <a href="">
-              <video
-                className="d-block w-100"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                poster="fallback-image.jpg" // optional fallback image before video loads
-              >
-                <source src={ecoFiendlyBanner} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <img
+                src={ecoFiendlyBanner}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                alt="Eco Friendly"
+              />
             </a>
           </div>
           <div className="carousel-item">
@@ -54,13 +50,6 @@ export const Carousel = () => {
                 Your browser does not support the video tag.
               </video>
             </a>
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://www.stanleypackaging.com.au/wp-content/uploads/2024/04/bio-wrap.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
           </div>
         </div>
         <button

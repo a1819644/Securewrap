@@ -106,11 +106,15 @@ const ServicePage = () => {
         </div>
       </div>
       <div className="container-fluid why-choose-our-services-container">
-        <div className="row why-choose-section">
-          <div className="col mb-4">
-            <img src={service} alt="Our Aim" />
+        <div className="row align-content-center why-choose-section">
+          <div className="col-md-6">
+            <img
+              src={service}
+              alt="Our Aim"
+              className="img-fluid w-100 h-auto"
+            />
           </div>
-          <div className="col">
+          <div className="col-md-6">
             <h2>Why Chooose Our Services</h2>
             <p>
               We service a variety of customers looking for ways to improve

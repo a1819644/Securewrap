@@ -1,5 +1,5 @@
 import "../assets/HeaderStyle.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../imgAssets/orginal_logo-removebg-preview.png";
 import CheckoutLogo from "../imgAssets/Add-to-cart/add-to-cart.png";
 
@@ -16,22 +16,34 @@ function Header({ promtionHeader }: props) {
             <p className="mb-0">{promtionHeader}</p>
           </div>
           <div className="col-3 p-2 d-flex justify-content-end">
-            <Link to="/Cart" className="nav-link active" aria-current="page">
+            <NavLink
+              to="/Cart"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              aria-current="page"
+            >
               <img className="checkout" src={CheckoutLogo} alt="Checkout" />
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
-      <nav className="navbar navbar-expand-lg bg-header ">
+      <nav className="navbar navbar-expand-lg bg-header">
         <div className="container-fluid">
-          {/* todo: add the links to the home page */}
-          <Link to={"/"} className="nav-link active" aria-current="page">
-            <img className="logo" src={logo} alt="secureWrap" />
-            Securewrap
-            <br />
-           <div className="brand-moto">One company Limitless Solution</div>
-          </Link>
-          {/* todo: toggle button isnt  working on small size window */}
+          <div className="brand-name">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              <img className="logo" src={logo} alt="secureWrap" />
+              Securewrap
+              <br />
+              <div className="brand-moto">One company Limitless Solution</div>
+            </NavLink>
+          </div>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -43,48 +55,58 @@ function Header({ promtionHeader }: props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to={"/"} className="nav-link active" aria-current="page">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to={"/products"}
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   Products
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to={"/service"}
+                <NavLink
+                  to="/service"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   Services
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to={"/aboutus"}
+                <NavLink
+                  to="/aboutus"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   About Us
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to={"/contact"}
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   Contact Us
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

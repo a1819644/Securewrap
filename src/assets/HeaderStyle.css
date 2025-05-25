@@ -16,13 +16,17 @@
   font-size: 25px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #0cb1ee;
+  color: black;
 }
 
 .navbar .container-fluid .logo {
   width: 25%;
   margin-right: 10px;
 }
+.navbar .container-fluid .brand-name a:hover {
+  color: black !important;
+}
+
 .navbar .container-fluid .brand-moto {
   font-size: 14px !important;
   color: rgb(90, 90, 90);
@@ -33,8 +37,16 @@
   box-shadow: 1px 1px 0.5px rgb(212, 211, 211);
 }
 .nav-item .nav-link {
+  color: black;
   font-size: 1rem !important;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-item .nav-link.active {
+  font-size: 1rem !important;
+  color: #0cb1ee !important;
+  font-weight: 700;
 }
 .nav-link:hover {
   color: #0cb1ee !important;
@@ -46,10 +58,10 @@
 
 @media (max-width: 1000px) {
   .navbar .container-fluid {
-   text-align: center;
+    text-align: center;
   }
-  
-.logo{
-  margin-left: -50px;
-}
+
+  .logo {
+    margin-left: -50px;
+  }
 }

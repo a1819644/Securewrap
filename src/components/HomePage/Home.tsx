@@ -1,4 +1,3 @@
-
 import { Carousel } from "../Carousel";
 import ProductCategories from "./ProductCategories";
 import NewArrivals from "./NewArrivals";
@@ -11,9 +10,7 @@ const Home = () => {
       <Carousel />
       <div className="container">
         <ProductCategories />
-      </div>
-      <Partners />
-      <div className="container">
+        <Partners />
         <NewArrivals />
         <Portfolio />
       </div>

@@ -1,40 +1,44 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Header from "./components/Header";
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap styles
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // font awesome icons
-import "./assets/HeaderStyle.css"; // Your custom styles
-import "./assets/ProductCategories.css";
-import Home from "./components/HomePage/Home";
-import ProductsPage from "./components/ProductPage/ProductsPage";
-import Cart from "./components/ProductPage/Cart";
-import ServicePage from "./components/ServicePage/ServicePage";
-import Checkout from "./components/ProductPage/Checkout";
-import AboutPage from "./components/AboutPage/AboutPage";
-import ContactUsPage from "./components/ContactPage/ContactUs";
 import Footer from "./components/Footer";
-import PoductDescriptionPage from "./components/ProductPage/ProductDescriptionPage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap styles
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ProductProvider } from "./components/data/ProductContext";
+import "./assets/HeaderStyle.css";
+import "./assets/ProductCategories.css";
+
+// Lazy loaded components
+const Home = lazy(() => import("./components/HomePage/Home"));
+const ProductsPage = lazy(
+  () => import("./components/ProductPage/ProductsPage")
+);
+const Cart = lazy(() => import("./components/ProductPage/Cart"));
+const Checkout = lazy(() => import("./components/ProductPage/Checkout"));
+const ServicePage = lazy(() => import("./components/ServicePage/ServicePage"));
+const AboutPage = lazy(() => import("./components/AboutPage/AboutPage"));
+const ContactUsPage = lazy(() => import("./components/ContactPage/ContactUs"));
+const ProductDescriptionPage = lazy(
+  () => import("./components/ProductPage/ProductDescriptionPage")
+);
 
 function App() {
   return (
     <Router>
       <Header promtionHeader="Free delivery on order over $500 all over Melbourne" />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/aboutus" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactUsPage />} />
-
-        <Route path="/products/:id" element={<PoductDescriptionPage />} />
-        <Route path="/Cart" element={<Cart />} />
-        <Route path="/Checkout" element={<Checkout />} />
-      </Routes>
+      <ProductProvider>
+        <Suspense fallback={<div className="text-center p-5">Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:id" element={<ProductDescriptionPage />} />
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/aboutus" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Suspense>
+      </ProductProvider>
       <Footer />
     </Router>
   );
